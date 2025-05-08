@@ -49,3 +49,7 @@ A powerful tool for extending images to different aspect ratios using Stable Dif
 ## Examples
 
 The `examples` directory contains sample images to test the application.
+
+## Credits
+
+This project is based on the original work by [VIDraft on Hugging Face](https://huggingface.co/spaces/VIDraft/ReSize-Image-Outpainting). Thanks to the original creators for their contribution.
