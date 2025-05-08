@@ -1,4 +1,5 @@
 # Re-Size Image Outpainting
+![Screenshot 2025-05-08 160704](https://github.com/user-attachments/assets/a3c3ee3b-7f34-42b2-9f43-c1fabe5cec21)
 
 A powerful tool for extending images to different aspect ratios using Stable Diffusion XL.
 
