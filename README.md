@@ -22,6 +22,7 @@ A powerful tool for extending images to different aspect ratios using Stable Dif
 1. Clone this repository
 2. Install the required packages:
    ```
+   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
    pip install -r requirements.txt
    ```
 
