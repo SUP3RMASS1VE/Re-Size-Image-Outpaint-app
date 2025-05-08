@@ -252,17 +252,11 @@ def update_history(new_image, history):
     history.insert(0, new_image)
     return history
 
-css = """
-.gradio-container {
-    width: 1200px !important;
-}
-"""
-
 # Define the title HTML string
-title = """<h1 align="center">Re-Size Image Outpaint</h1>
+title = """<h1 align="center" style="font-family: 'Comic Sans MS', cursive; background: linear-gradient(45deg, #c77dff, #7b2cbf); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 10px rgba(201, 126, 255, 0.5); font-size: 2.5em; padding: 10px; margin-bottom: 20px;">Re-Size Image Outpaint</h1>
 """
 
-with gr.Blocks(css=css, title="Re-Size Image Outpaint") as demo:
+with gr.Blocks(title="Re-Size Image Outpaint", theme="monochrome") as demo:
     with gr.Column():
         gr.HTML(title)
 
@@ -341,21 +335,8 @@ with gr.Blocks(css=css, title="Re-Size Image Outpaint") as demo:
                                 visible=False
                             )
                         
-                        with gr.Column():
-                            preview_button = gr.Button("Preview alignment and mask")
+                        # Preview button removed
                             
-                            
-                gr.Examples(
-                    examples=[
-                        ["./examples/example_2.jpg", 1440, 810, "Left"],
-                        ["./examples/example_3.jpg", 1024, 1024, "Top"],
-                        ["./examples/example_3.jpg", 1024, 1024, "Bottom"],
-                    ],
-                    inputs=[input_image, width_slider, height_slider, alignment_dropdown],
-                )
-
-                
-
             with gr.Column():
                 result = ImageSlider(
                     interactive=False,
@@ -364,7 +345,7 @@ with gr.Blocks(css=css, title="Re-Size Image Outpaint") as demo:
                 use_as_input_button = gr.Button("Use as Input Image", visible=False)
 
                 history_gallery = gr.Gallery(label="History", columns=6, object_fit="contain", interactive=False)
-                preview_image = gr.Image(label="Preview")
+                # Preview image removed
 
         
 
@@ -444,14 +425,6 @@ with gr.Blocks(css=css, title="Re-Size Image Outpaint") as demo:
         fn=lambda: gr.update(visible=True),
         inputs=None,
         outputs=use_as_input_button,
-    )
-
-    preview_button.click(
-        fn=preview_image_and_mask,
-        inputs=[input_image, width_slider, height_slider, overlap_percentage, resize_option, custom_resize_percentage, alignment_dropdown,
-                overlap_left, overlap_right, overlap_top, overlap_bottom],
-        outputs=preview_image,
-        queue=False
     )
 
 demo.queue(max_size=12).launch(share=False, server_name="127.0.0.1", server_port=7860, favicon_path="./logo.png")
